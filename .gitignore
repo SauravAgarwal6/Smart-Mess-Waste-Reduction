@@ -1,0 +1,27 @@
+# Node.js backend
+# ===================
+# Dependencies
+/backend/node_modules/
+
+# Environment variables
+/backend/.env
+/backend/.env.local
+/backend/.env.development
+/backend/.env.production
+
+# Log files
+*.log
+npm-debug.log*
+
+# System files
+# ===================
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# VS Code IDE
+# ===================
+.vscode/

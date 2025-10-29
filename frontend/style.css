@@ -1,0 +1,511 @@
+
+body {
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2rem;
+}
+
+p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* -------------------- PRELOADER -------------------- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  /* Assumes 'images/hero.jpg' is in the same folder */
+  background: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: #2d89ef;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+  border: none; /* Added for consistency */
+  cursor: pointer; /* Added for consistency */
+  font-family: 'Fira Sans', sans-serif; /* Added for consistency */
+}
+
+.btn:hover {
+  background: #1e5cb8;
+}
+
+/* -------------------- NAVBAR  -------------------- */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: #222;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover, .navbar a.active {
+  background: #2d89ef;
+  color: #fff;
+}
+
+/* -------------------- ABOUT  -------------------- */
+#about {
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* -------------------- FEATURES  -------------------- */
+#features {
+  padding: 3rem 2rem;
+  background: #f3f4f6;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+  opacity: 1; /* Set to 1, JS handles visibility */
+  transform: translateY(0); /* Set to 0, JS handles visibility */
+}
+
+.feature-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+  font-size: 2rem;
+  color: #2d89ef;
+  margin-bottom: 0.5rem;
+}
+
+/* -------------------- VOTE FORM  -------------------- */
+#vote, #complaints {
+  padding: 3rem 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#vote form, #complaintForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#vote input, #vote select, #vote button,
+#complaints input, #complaints textarea, #complaints button {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Fira Sans', sans-serif;
+  box-sizing: border-box; /* Added for consistency */
+}
+
+/* Button styles are covered by .btn */
+
+/* -------------------- VOTE CHART & SUMMARY  -------------------- */
+#voteChart {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.summary-card {
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 150px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.summary-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.summary-card i {
+  font-size: 2rem;
+  color: #2d89ef;
+  margin-bottom: 0.5rem;
+}
+
+/* -------------------- TEAM (Your Original) -------------------- */
+#team {
+  padding: 3rem 2rem;
+  background: #f3f4f6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.team-card {
+  width: 200px;
+  height: 260px;
+  perspective: 1000px;
+  opacity: 1; /* Set to 1, JS handles visibility */
+  transform: translateY(0); /* Set to 0, JS handles visibility */
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.team-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.team-card:hover .team-card-inner {
+  transform: rotateY(180deg) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.team-card-front, .team-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Added for consistency */
+}
+
+.team-card-front img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  /* Using placeholder */
+  background: #ccc;
+}
+
+.team-card-back {
+  background: #2d89ef;
+  color: #fff;
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+}
+
+/* -------------------- FOOTER (Your Original) -------------------- */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+
+/* -------------------- BACK TO TOP (Your Original) -------------------- */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #2d89ef;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+#backToTop:hover {
+  background: #1e5cb8;
+}
+
+/* =================================================================
+    NEW STYLES FOR AUTH & COMPLAINT MANAGEMENT
+   ================================================================= */
+
+/* -------------------- AUTH PAGES (LOGIN & REGISTER) -------------------- */
+#auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Using your original body background */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.auth-container {
+  max-width: 450px;
+  width: 100%;
+  padding: 2.5rem;
+  background: #fff; /* Using your card background */
+  border-radius: 10px; /* Using your card border-radius */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Using your form shadow */
+  text-align: center;
+}
+
+.auth-container h2 {
+  font-family: 'Oswald', sans-serif; /* Using your header font */
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Fira Sans', sans-serif; /* Using your body font */
+  box-sizing: border-box;
+}
+
+.auth-switch {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-family: 'Quicksand', sans-serif; /* Using your paragraph font */
+}
+
+.auth-switch a {
+  color: #2d89ef; /* Using your primary blue */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+#loginResponse, #registerResponse {
+  min-height: 20px;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+/* =================================================================
+    NEW & IMPROVED COMPLAINT SECTION (ONE-LINE FIX)
+   ================================================================= */
+
+/* -------------------- COMPLAINTS LIST (NEW) -------------------- */
+.complaints-list-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+#complaintsList {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f3f4f6; /* Your original light grey background */
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.complaint-item {
+  background: #fff;
+  padding: 1rem; /* Clean padding */
+  border-radius: 5px;
+  margin-bottom: 0.5rem; /* Your original spacing */
+  border-left: 4px solid #2d89ef; /* Your original blue accent */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This will vertically center the delete button with the text */
+}
+
+/* This is the container for the text */
+.complaint-content {
+  flex-grow: 1; /* Takes up the available space */
+  margin-right: 1rem; /* Space before the delete button */
+  
+  /* This is the FIX */
+  display: flex; /* Makes the roll number and text inside it sit side-by-side */
+  align-items: baseline; /* Aligns the text nicely */
+  flex-wrap: wrap; /* Allows text to wrap if the line is too long */
+}
+
+/* This is the Roll Number */
+.complaint-item strong {
+  color: #333;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  
+  /* FIX: Removed 'display: block' */
+  margin-right: 0.5rem; /* Adds a small space after the roll number */
+  flex-shrink: 0; /* Prevents the roll number from shrinking or wrapping */
+}
+
+/* This is the complaint text */
+.complaint-item p {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: #333; /* Ensures text is readable */
+}
+
+/* This is the delete button */
+.delete-btn {
+  background: #e74c3c; /* Red background */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Matches your other buttons */
+  width: auto; /* Auto-size to fit text */
+  height: auto; /* Auto-size to fit text */
+  font-size: 0.8rem; /* A good size for a small button */
+  font-weight: 600;
+  font-family: 'Fira Sans', sans-serif; /* Matches your other buttons */
+  line-height: 1.5; /* Normal line height */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  margin-left: 1rem;
+  padding: 0.3rem 0.8rem; /* Gives the text some space */
+}
+
+.delete-btn:hover {
+  background: #c0392b; /* Darker red on hover */
+}

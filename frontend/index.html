@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Mess Waste Reduction | NIT JSR</title>
+  <!-- Using your original fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Fira+Sans:wght@300;400;500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="preloader"><div class="loader"></div></div>
+
+  <main id="app-content">
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Smart Mess Waste Reduction</h1>
+        <p>Making NIT Jamshedpur Sustainable & Smart</p>
+        <a href="#features" class="btn">Explore Features</a>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <a href="#about">About</a>
+      <a href="#features">Features</a> <!-- ADDED BACK -->
+      <a href="#vote">Vote Meal</a>
+      <a href="#team">Team</a> <!-- ADDED BACK -->
+      <a href="#complaints">Complaints</a>
+      <a href="#" id="logout-btn" class="btn">Logout</a>
+    </nav>
+
+    <section id="about">
+      <h2>About the Project</h2>
+      <p>Our Smart Mess Management System reduces food waste by allowing students to pre-vote meals and enabling mess managers to plan portions effectively. This initiative supports sustainability, cost savings, and student satisfaction on campus.</p>
+    </section>
+
+    <!-- =================================== -->
+    <!--     FEATURES SECTION (ADDED BACK)     -->
+    <!-- =================================== -->
+    <section id="features">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card"><i class="fa-solid fa-utensils"></i><h3>Meal Voting</h3><p>Students mark attendance for meals to help prepare accurate portions.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-chart-line"></i><h3>Smart Dashboard</h3><p>Staff monitor preferences and food usage in real time.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-recycle"></i><h3>Waste Tracking</h3><p>Track leftovers to reduce waste and improve planning.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-bell"></i><h3>Notifications</h3><p>Reminders for students and alerts for mess staff.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-leaf"></i><h3>Sustainability Score</h3><p>Hostels compete on waste reduction, encouraging eco-friendly practices.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-mobile-screen"></i><h3>Mobile Friendly</h3><p>Students can easily vote for meals using their mobile devices.</p></div>
+      </div>
+    </section>
+
+    <section id="vote">
+      <h2>Meal Voting</h2>
+      <form id="voteForm">
+        <label for="student">Your Roll No:</label>
+        <input type="text" id="student" name="student" readonly>
+        <label for="meal">Meal Preference:</label>
+        <select id="meal" name="meal" required>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+        </select>
+        <button type="submit" class="btn">Submit Vote</button>
+      </form>
+      <p id="response"></p>
+    </section>
+
+    <!-- =================================== -->
+    <!--   VOTE CHART SECTION (ADDED BACK)   -->
+    <!-- =================================== -->
+    <section id="voteChart">
+      <h2>Meal Votes Overview</h2>
+      <div class="summary-cards">
+        <div class="summary-card"><i class="fa-solid fa-sun"></i><h3>Breakfast</h3><p><span id="breakfastVotes">0</span> votes</p></div>
+        <div class="summary-card"><i class="fa-solid fa-utensils"></i><h3>Lunch</h3><p><span id="lunchVotes">0</span> votes</p></div>
+        <div class="summary-card"><i class="fa-solid fa-moon"></i><h3>Dinner</h3><p><span id="dinnerVotes">0</span> votes</p></div>
+      </div>
+      <canvas id="mealChart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- =================================== -->
+    <!--       TEAM SECTION (ADDED BACK)       -->
+    <!-- =================================== -->
+    <section id="team">
+      <h2>Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Ayush" alt="Ayush"><h3>Ayush</h3><p>PI007 – Frontend</p></div><div class="team-card-back"><p>Passionate about clean UI and smooth interactions.</p></div></div></div>
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Gaurav" alt="Gaurav"><h3>Gaurav</h3><p>PI008 – Backend</p></div><div class="team-card-back"><p>Focused on server-side logic and database management.</p></div></div></div>
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Suhani" alt="Suhani"><h3>Suhani</h3><p>PI009 – UI/UX Designer</p></div><div class="team-card-back"><p>Designs intuitive interfaces and user-friendly layouts.</p></div></div></div>
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Ramakant" alt="Ramakant"><h3>Ramakant</h3><p>PI010 – Frontend</p></div><div class="team-card-back"><p>Works on interactive front-end components and animations.</p></div></div></div>
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Aditya" alt="Aditya"><h3>Aditya</h3><p>PI011 – Database</p></div><div class="team-card-back"><p>Manages data storage and ensures smooth database operations.</p></div></div></div>
+        <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><img src="https://placehold.co/120x120/3498db/ffffff?text=Masoom" alt="Masoom"><h3>Masoom</h3><p>PI013 – QA & Testing</p></div><div class="team-card-back"><p>Ensures all functionalities are bug-free and smooth.</p></div></div></div>
+      </div>
+    </section>
+
+    <section id="complaints">
+      <h2>Complaint Box</h2>
+        <form id="complaintForm">
+          <label for="complaintText">Submit a New Complaint:</label>
+          <textarea id="complaintText" name="complaintText" rows="4" required></textarea>
+          <button type="submit" class="btn">Submit Complaint</button>
+        </form>
+        <p id="complaintResponse"></p>
+      
+      <div class="complaints-list-container">
+        <h3>Submitted Complaints</h3>
+        <div id="complaintsList">
+          <!-- Complaints from the backend will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 NIT Jamshedpur | Smart Mess Project</p>
+    </footer>
+
+    <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+  </main>
+  
+  <!-- ADDED CHART.JS SCRIPT BACK -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="auth.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
