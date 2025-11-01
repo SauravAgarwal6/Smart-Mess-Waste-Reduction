@@ -35,6 +35,9 @@ app.use('/api/auth', authRoutes);
 const complaintRoutes = require('./routes/complaints'); // Import complaint routes
 app.use('/api/complaints', complaintRoutes); // Use complaint routes
 
+const voteRoutes = require('./routes/votes'); // Import vote routes
+app.use('/api/votes', voteRoutes);
+
 // --- Start the server ---
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
