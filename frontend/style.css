@@ -110,6 +110,7 @@ p {
 .navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 1rem;
   background: #222;
@@ -131,6 +132,13 @@ p {
 .navbar a:hover, .navbar a.active {
   background: #2d89ef;
   color: #fff;
+}
+
+#logout-btn{
+  margin: 0;
+}
+#logout-btn:hover{
+    background-color: #0774f1;
 }
 
 /* -------------------- ABOUT  -------------------- */
@@ -489,23 +497,17 @@ footer {
 
 /* This is the delete button */
 .delete-btn {
-  background: #e74c3c; /* Red background */
+  background: #e74c3c;
   color: white;
   border: none;
-  border-radius: 5px; /* Matches your other buttons */
-  width: auto; /* Auto-size to fit text */
-  height: auto; /* Auto-size to fit text */
-  font-size: 0.8rem; /* A good size for a small button */
-  font-weight: 600;
-  font-family: 'Fira Sans', sans-serif; /* Matches your other buttons */
-  line-height: 1.5; /* Normal line height */
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 0.3s;
-  flex-shrink: 0; /* Prevent button from shrinking */
-  margin-left: 1rem;
-  padding: 0.3rem 0.8rem; /* Gives the text some space */
+  transition: all 0.3s ease;
 }
 
 .delete-btn:hover {
-  background: #c0392b; /* Darker red on hover */
+  background: #c0392b;
+  transform: scale(1.05);
 }

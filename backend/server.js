@@ -1,7 +1,7 @@
 // Import required packages
 const express = require('express');
-const mongoose = require('mongoose'); // <-- NEW: Import mongoose
-const cors = require('cors');
+const mongoose = require('mongoose');
+const cors = require('cors'); // CORS is still imported
 require('dotenv').config();
 
 // Initialize the Express app
@@ -11,24 +11,44 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // --- Middleware ---
-app.use(cors()); 
-app.use(express.json()); 
 
+const allowedOrigins = [
+  'http://127.0.0.1:5500', // Your local frontend (from the screenshot)
+  'http://localhost:5500'  // Just in case
+  // We will add your LIVE frontend URL here later
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the incoming address is in our whitelist
+    // The `!origin` part allows requests from Postman/Insomnia (no origin)
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // If it is, allow it
+      callback(null, true);
+    } else {
+      // If it's not, block it
+      callback(new Error('This address is not allowed by CORS'));
+    }
+  }
+}));
+// --- NEW CORS CONFIGURATION END ---
 // =======================================================
-// --- NEW CODE START: Database Connection ---
+
+app.use(express.json()); // This was already here and is correct
+
+// --- Database Connection ---
 const dbURI = process.env.MONGODB_URI; // Get the URI from the .env file
 
 mongoose.connect(dbURI)
   .then(() => console.log('MongoDB connected successfully.'))
   .catch(err => console.error('MongoDB connection error:', err));
-// --- NEW CODE END ---
-// =======================================================
 
 // --- A simple test route ---
 app.get('/', (req, res) => {
   res.send('Smart Mess Backend is running!');
 });
 
+// --- API Routes ---
 const authRoutes = require('./routes/auth'); // Import the new auth routes
 app.use('/api/auth', authRoutes);
 

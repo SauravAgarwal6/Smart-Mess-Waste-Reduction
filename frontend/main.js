@@ -1,6 +1,6 @@
 // This script runs only on index.html and assumes auth.js has already validated the user
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://smart-mess-waste-reduction-backend-y838.onrender.com/api';
 
 // --- Global variable to hold our chart object ---
 let mealChart = null;
