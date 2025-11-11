@@ -13,9 +13,10 @@ const PORT = process.env.PORT || 5000;
 // --- Middleware ---
 
 const allowedOrigins = [
-  'http://127.0.0.1:5500', // Your local frontend (from the screenshot)
-  'http://localhost:5500'  // Just in case
-  // We will add your LIVE frontend URL here later
+  'http://127.0.0.1:5500', 
+  'http://localhost:5500',
+  'https://stirring-crepe-34e3ef.netlify.app'
+  
 ];
 
 app.use(cors({
